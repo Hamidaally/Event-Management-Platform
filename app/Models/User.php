@@ -14,6 +14,10 @@ class User extends Authenticatable
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function tickets()
+    {
+        return $this->hasMany(Tickets::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
