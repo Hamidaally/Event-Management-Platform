@@ -12,43 +12,49 @@ class TicketController extends Controller
 {
     public function index()
     {
-    $tickets = Ticket::with('event')->get();
-    return view('tickets.index', compact('tickets'));
+        $tickets = Ticket::with('event')->get();
+        return view('tickets.index', compact('tickets'));
     }
 
     public function create()
     {
-
         $events = Event::all();
         return view('tickets.create', compact('events'));
     }
 
-   public function store(Request $request)
+    public function store(Request $request)
     {
         if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'You must be logged in to create a ticket');
         }
+
         $request->validate([
             'event_id' => 'required|exists:events,id',
-            'ticket_type' => 'required|string|max:255', 
+            'ticket_type' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:0',
+            'price_per_person' => 'required|numeric|min:0',
             'purchase_date' => 'required|date',
             'status' => 'required|string',
         ]);
+
         $user_id = auth()->user()->id;
+
+        
+        $totalPrice = $request->price_per_person * $request->quantity;
+
         Ticket::create([
             'event_id' => $request->event_id,
-            'ticket_type' => $request->ticket_type, 
+            'ticket_type' => $request->ticket_type,
             'quantity' => $request->quantity,
-            'price' => $request->price,
+            'price' => $totalPrice,
             'purchase_date' => now(),
-            'status' => 'available', 'new','sold','reserved',
+            'status' => $request->status,
             'user_id' => $user_id,
         ]);
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully');
     }
+
     public function edit($id)
     {
         $ticket = Ticket::findOrFail($id);
@@ -64,16 +70,19 @@ class TicketController extends Controller
             'event_id' => 'required|exists:events,id',
             'ticket_type' => 'required|string|max:255',
             'quantity' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:0',
+            'price_per_person' => 'required|numeric|min:0',
             'purchase_date' => 'required|date',
-            'status' => 'required|string', 
+            'status' => 'required|string',
         ]);
+
+        
+        $totalPrice = $request->price_per_person * $request->quantity;
 
         $ticket->update([
             'event_id' => $request->event_id,
             'ticket_type' => $request->ticket_type,
             'quantity' => $request->quantity,
-            'price' => $request->price,
+            'price' => $totalPrice,
             'purchase_date' => $request->purchase_date,
             'status' => $request->status,
         ]);
@@ -86,20 +95,12 @@ class TicketController extends Controller
         $ticket = Ticket::findOrFail($id);
         return view('tickets.show', compact('ticket'));
     }
+
     public function destroy($id)
     {
-        
         $ticket = Ticket::findOrFail($id);
         $ticket->delete();
-    
 
         return redirect()->route('tickets.index')->with('success', 'Ticket deleted successfully');
     }
-    
 }
-
-
-
-
-
-     
