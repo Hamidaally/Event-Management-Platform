@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EVENTS</title>
     <style>
         tr{
             padding: 100px;
@@ -60,12 +60,6 @@
         </tr>  
         <tr>
           <td> <input type="text" placeholder="Location" name="location"></td> 
-        </tr>
-        <tr>
-          <td> <input type="text" placeholder="Ticket types" name="types"></td> 
-        </tr>
-        <tr>
-          <td> <input type="number" placeholder="Pricing" name="price"></td> 
         </tr>
         <tr>
           <td> <input type="date" placeholder="Date" name="date"></td> 

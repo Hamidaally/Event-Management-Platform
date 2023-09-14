@@ -71,12 +71,6 @@
           <td> <input type="text" placeholder="Location" name="location" value= "{{$event->location}}"></td> 
         </tr>
         <tr>
-          <td> <input type="text" placeholder="Ticket types" name="types" value= "{{$event->types}}"></td> 
-        </tr>
-        <tr>
-          <td> <input type="number" placeholder="Pricing" name="price" value= "{{$event->pricing}}"></td> 
-        </tr>
-        <tr>
           <td> <input type="date" placeholder="Date" name="date" value= "{{$event->date}}"></td> 
         </tr>
         <tr>

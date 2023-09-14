@@ -22,10 +22,8 @@
         <th>Date</th>
         <th>Time</th>
         <th>Location</th>
-        <th>Ticket Types</th>
-        <th>Price</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Action</th>
+    
       </tr>
     </thead>
     <tbody>
@@ -38,21 +36,14 @@
       <td>{{ $event->date}}</td>
       <td>{{ $event->time }}</td>
       <td>{{ $event->location }}</td>
-      <td>{{ $event->types}}</td>
-      <td>{{ $event->pricing }}</td>
     
       <td>
-        <!-- <a href="{{ route('edit', ['event'=>$event] )}}">Edit</a> -->
-        <a href="{{ route('edit', ['event' => $event->id]) }}">Edit</a>
-      </td>
-
-      <td>
-      <form action="{{route('delete',['event' => $event->id])}}" method="post">
+        <a href="{{ route('edit', ['event' => $event->id]) }}" style="display: inline-block;"class="btn btn-primary">Edit</a>
+      <form action="{{route('delete',['event' => $event->id])}}"  method="post" style="display: inline-block;">
         @csrf
         @method('delete')
-<input type="submit" value="Delete"/>
-      </form>
-        
+        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
+         </form>
       </td>
 
       </tr>

@@ -28,8 +28,6 @@ class EventViewController extends Controller
             $event->ename = $request->ename;
             $event->description = $request->desc;
             $event->location = $request->location;
-            $event->types = $request->types;
-            $event->pricing = $request->price;
             $event->date = $request->date;
             $event->time = $request->time;
             $event->update();
