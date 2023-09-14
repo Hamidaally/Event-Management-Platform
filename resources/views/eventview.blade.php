@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>View Student Records</title>
+  <title>View Event Records</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 <body>
 <div class="container">
   <h2 class="text-center">View Event Records</h2>
-          
+  <div><button class="btn btn-primary" style="align-content: center;"><a href="/eventorganizer" style="color: aliceblue;">Create Event</a></button></div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -26,13 +26,14 @@
         <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
+        
       </tr>
     </thead>
     <tbody>
     @foreach ($events as $event)
      
       <tr>
-      <td>{{ $event->id}}</td> 
+      <td>{{ $event->event_id}}</td> 
       <td>{{ $event->ename }}</td>
       <td>{{ $event->description}}</td>
       <td>{{ $event->date}}</td>
@@ -43,14 +44,17 @@
     
       <td>
         <!-- <a href="{{ route('edit', ['event'=>$event] )}}">Edit</a> -->
-        <a href="{{ route('edit', ['event' => $event->id]) }}">Edit</a>
+        <button type="button" class="btn btn-success"><a href="{{ route('edit', ['event' => $event->event_id]) }}" style="color: white;">Edit</a></button>
+        
       </td>
 
       <td>
-      <form action="{{route('delete',['event' => $event->id])}}" method="post">
+      <form action="{{route('delete',['event' => $event->event_id])}}" method="post">
         @csrf
         @method('delete')
-<input type="submit" value="Delete"/>
+        
+        <input name="_method" type="hidden" value="DELETE">
+          <button type="submit" class="btn btn-danger confirm-button" >Delete</button>
       </form>
         
       </td>
@@ -62,7 +66,28 @@
   </table>
 </div>
 <div style = "text-align:center">
-<a href = "/eventorganizer">Return to first page</a> .
+<button type="button" class="btn btn-info"><a href = "/eventorganizer" style="color: white;">Return to first page</a> </button>
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+
+    $('.confirm-button').click(function(event) {
+        var form =  $(this).closest("form");
+        event.preventDefault();
+        swal({
+            title: `Are you sure you want to delete this row?`,
+            text: "It will be gone forever",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+    });
+
+</script>
 </html>

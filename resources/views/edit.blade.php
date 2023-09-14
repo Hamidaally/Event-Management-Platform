@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         tr{
             padding: 100px;
@@ -51,8 +55,8 @@
     @endif
     
    </div>
-
-    <form action="{{ route('update', ['event' => $event->id]) }}" method="post">
+  
+    <form action="{{ route('update', ['event' => $event->event_id]) }}" method="post">
   
         @csrf
         @method('PUT')
@@ -62,30 +66,34 @@
             </td>
         </tr>  
         <tr>
-          <td><input type="text" placeholder="Event name" name="ename" value= "{{$event->ename}}"></td>  
+          <td><input type="text" class="form-control" placeholder="Event name" name="ename" value= "{{$event->ename}}"></td>  
         </tr>   
         <tr>
-          <td><input type="text" placeholder="Describe event" name="desc" value= "{{$event->description}}"></td>  
+          <td><input type="text" class="form-control" placeholder="Describe event" name="desc" rows="3" value= "{{$event->description}}"></td>  
         </tr>  
         <tr>
-          <td> <input type="text" placeholder="Location" name="location" value= "{{$event->location}}"></td> 
+          <td> <input type="text" class="form-control" placeholder="Location" name="location" value= "{{$event->location}}"></td> 
         </tr>
         <tr>
-          <td> <input type="text" placeholder="Ticket types" name="types" value= "{{$event->types}}"></td> 
+          <td> <input type="text" class="form-control" placeholder="Ticket types" name="types" value= "{{$event->types}}"></td> 
         </tr>
         <tr>
-          <td> <input type="number" placeholder="Pricing" name="price" value= "{{$event->pricing}}"></td> 
+          <td> <input type="number" class="form-control" placeholder="Pricing" name="price" value= "{{$event->pricing}}"></td> 
         </tr>
         <tr>
-          <td> <input type="date" placeholder="Date" name="date" value= "{{$event->date}}"></td> 
+          <td> <input type="date" class="form-control" placeholder="Date" name="date" value= "{{$event->date}}"></td> 
         </tr>
         <tr>
-          <td> <input type="time" placeholder="Time" name="time" value= "{{$event->time}}"></td> 
+          <td> <input type="time" class="form-control" placeholder="Time" name="time" value= "{{$event->time}}"></td> 
         </tr>
         <tr>
-          <td> <input type="submit"  id="button" value = "Update"></td> 
+        <td><button type="submit" class="btn btn-light" style="width: 98%;background-color:mediumseagreen; color:white;">Update Event</button></td>  
         </tr> 
         </table>
+        <div class="refContainer">
+        <button type="button" class="btn btn-info"><a href = "/eventShow" style="color: white;">Cick me</a> </button> 
+    </div>
     </form>
+    @include('sweetalert::alert')
 </body>
 </html>

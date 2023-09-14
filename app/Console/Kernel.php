@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Notifications\Notification;
+use App\Notifications\EventNotification;
+use App\Models\Event;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,7 +19,16 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-    }
+    $schedule->call(function () {
+        $events = Event::where('date', '<=', now()->addDays(1))->get();
+
+        foreach ($events as $event) {
+           $user = $event->user;
+            $user->notify( new EventNotification($event));
+        }
+    })->daily(); // You can adjust the schedule as needed
+}
+    
 
     /**
      * Register the commands for the application.
@@ -29,4 +41,5 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
 }

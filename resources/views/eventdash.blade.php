@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style>
         tr{
             padding: 100px;
@@ -36,6 +40,10 @@
       margin-top:30px;
       text-align: center;
     }
+    p{
+      color: black;
+      font-family: sans-serif;
+    }
     </style>
 </head>
 <body>
@@ -46,41 +54,46 @@
     
     <form action = "/show" method="post">
       @csrf
-        <table align="center" width="45%" style="background-color: rgb(162, 75, 162); padding: 1% 0;">
+      <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-primary"><a href="/analytics" style="color: white;">Home Page</a></button>
+      </div>
+        <table align="center" width="45%" style="background-color: whitesmoke; padding: 1% 0;">
             <tr>
             <td class="headerTitle">
             <p class="createAccount">Create an Event</p>
             </td>
         </tr>  
         <tr>
-          <td><input type="text" placeholder="Event name" name="ename"></td>  
+          <td><input type="text" class="form-control" name="ename" placeholder="Event name"></td>
+        </tr>
+        <tr>
+          <td> <textarea class="form-control" aria-label="With textarea" placeholder="Describe event" name="desc" rows="3"></textarea></td> 
         </tr>   
+        
         <tr>
-          <td><input type="text" placeholder="Describe event" name="desc"></td>  
-        </tr>  
-        <tr>
-          <td> <input type="text" placeholder="Location" name="location"></td> 
+          <td><input type="text" class="form-control" name="location" placeholder="Location"></td> 
         </tr>
         <tr>
-          <td> <input type="text" placeholder="Ticket types" name="types"></td> 
+          <td> <input type="text" class="form-control" placeholder="Ticket types" name="types"></td> 
         </tr>
         <tr>
-          <td> <input type="number" placeholder="Pricing" name="price"></td> 
+          <td> <input type="number" class="form-control" placeholder="Pricing" name="price"></td> 
         </tr>
         <tr>
-          <td> <input type="date" placeholder="Date" name="date"></td> 
+          <td> <input type="date" class="form-control" placeholder="Date" name="date"></td> 
         </tr>
         <tr>
-          <td> <input type="time" placeholder="Time" name="time"></td> 
+          <td> <input type="time" class="form-control" placeholder="Time" name="time"></td> 
         </tr>
         <tr>
-          <td> <input type="submit"  id="button" value="Submit Event" ></td> 
+       <td><button type="submit" class="btn btn-primary" style="width: 98%;">Submit Event</button></td> 
         </tr> 
         </table>
     </form>
     <div class="refContainer">
-    <a href = "/eventShow"> Click Here</a> to view events.
+   <button style="background-color: mediumseagreen;" class="btn btn-light"><a href = "/eventShow" style="color: white;"> More options</a> </button> 
     </div>
-   
+    @include('sweetalert::alert')
+
 </body>
 </html>
