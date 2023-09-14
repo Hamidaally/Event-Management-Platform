@@ -35,13 +35,13 @@
 
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $ticket->quantity }}" required>
+                            <input type="text" class="form-control" id="quantity" name="quantity" value="{{ $ticket->quantity }}" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ $ticket->price }}" required>
-                        </div>
+                            <label for="price_per_person">Price </label>
+                           <input type="text" name="price_per_person" id="price_per_person" class="form-control" value="{{ $ticket->price / $ticket->quantity }}" required>
+                       </div>
 
                         <div class="form-group">
                             <label for="purchase_date">Purchase Date</label>

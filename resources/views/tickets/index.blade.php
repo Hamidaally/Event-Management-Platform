@@ -1,12 +1,16 @@
 
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <div class="container">
 <h2 class="text-center">Tickets</h2>
 <div class="d-flex justify-content-end">
 <a class="btn btn-primary  " href="{{ route('tickets.create')}}"  role="button">Add New Ticket</a>
 </div>
-<table class="table table-bordered table-striped">
+   <table id="tickets-table" class="table table-bordered table-striped {{ count($tickets) > 0 ? 'datatable' : '' }} @can('ticket_delete') dt-select @endcan">
+    
         <thead>
             <tr>
                 <th>ID</th>
@@ -41,6 +45,15 @@
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#tickets-table').DataTable({
+            paging: true,        
+            searching: true,     
+            ordering: true,      
+        });
+    });
+</script>
 @endsection
 
 

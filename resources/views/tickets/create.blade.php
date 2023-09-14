@@ -32,14 +32,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="quantity">Quantity</label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" required>
+                           <label for="quantity">Quantity:</label>
+                          <input type="text" name="quantity" id="quantity" class="form-control" required>
                         </div>
-
+                       
                         <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" step="0.01" class="form-control" id="price" name="price" required>
-                        </div>
+                   <label for="price_per_person">Price</label>
+                   <input type="text" name="price_per_person" id="price_per_person" class="form-control" value="{{ old('price_per_person') }}" required>
+                    </div>
                         <div class="form-group">
                             <label for="purchase_date">Purchase Date</label>
                             <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
@@ -62,9 +62,3 @@
     </div>
 </div>
 @endsection
-
-
-
-
-
-
