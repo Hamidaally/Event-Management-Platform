@@ -12,13 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "livewire/livewire": "^2.12",
-        "milon/barcode": "^10.0",
-        "realrashid/sweet-alert": "^7.1",
-        "santigarcor/laratrust": "^7.2",
-        "simplesoftwareio/simple-qrcode": "^4.2",
-        "stripe/stripe-php": "^12.0",
-        "willvincent/laravel-rateable": "^2.4"
+        "santigarcor/laratrust": "^7.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -66,7 +60,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "cartalyst/stripe-laravel": "7.0.*"
-    
+    "prefer-stable": true
 }

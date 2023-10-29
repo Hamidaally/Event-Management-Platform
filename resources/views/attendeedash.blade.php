@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,78 +56,28 @@
     </div>
   </div>
 </nav>
+=======
+@extends('layouts.app')
+
+@section('content')
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
 <div class="container">
-  <h2 class="text-center">Available Events</h2>
-          
-  <table class="table table-bordered table-striped" id="myTable">
-    <thead>
-      <tr>
-        <th>ID</th> 
-        <th>Event Name</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Location</th>
-        <th>Ticket Types</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>QR CODE</th>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard for attendee') }}</div>
 
-      </tr>
-    </thead>
-    <tbody>
-    @foreach ($events as $event)
-     
-      <tr>
-      <td>{{ $event->event_id}}</td> 
-      <td>{{ $event->ename }}</td>
-      <td>{{ $event->description}}</td>
-      <td>{{ $event->date}}</td>
-      <td>{{ $event->time }}</td>
-      <td>{{ $event->location }}</td>
-      <td>{{ $event->types}}</td>
-      <td>{{ $event->pricing }}</td>
-      <td> 
-      <input data-id="{{$event->event_id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $event->status ? 'checked' : '' }}>
-   
-      </td>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-      <td>{!! DNS2D::getBarcodeHTML('4445645656', 'QRCODE') !!}</td>
-      </tr>
-      
-      @endforeach
-    </tbody>
-  </table>
+                    {{ __('You are logged in as Attendee!') }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="d-flex justify-content-center">
-<button type="button" class="btn btn-primary" style="align-content: center;" ><a href="/home" style="color: white;">LogOut</a></button>
-</div>
-</div>
-<script>
- $(function() { 
-           $('.toggle-class').change(function() { 
-           var status = $(this).prop('checked') == true ? 1 : 0;  
-           var event_id = $(this).data('event_id');  
-           $.ajax({ 
-    
-               type: "GET", 
-               dataType: "json", 
-               url: '/status/update', 
-               data: {'status': status, 'event_id': event_id}, 
-               success: function(data){ 
-               console.log(data.success) 
-            } 
-         }); 
-      }) 
-   }); 
-</script>
-</body>
-<script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script>
-  let table = new DataTable('#myTable');
-</script>
-</html>
+@endsection

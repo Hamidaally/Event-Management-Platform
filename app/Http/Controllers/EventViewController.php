@@ -12,8 +12,9 @@ class EventViewController extends Controller
     //
     public function index(){
         $events = Event::all();
+        
         return view('eventview',['events'=>$events]);
-     }
+        }
      public function edit(Event $event){
         // dd($event->id
         return view('edit',['event'=>$event]);
@@ -31,17 +32,17 @@ class EventViewController extends Controller
             $event->time = $request->time;
             $event->update();
 
-     return back()->with('toast_success', 'Event updated Successfully!');
-       
+            echo "Event updated successfully. <br/><br/>";
+
+     echo '<a href = "/eventShow">Go Back</a>' ;        
 
     }
 
     public function destroy(Event $event){
-   $event->delete();
-   return back();
+    $event->delete();
 
-   // echo "Event deleted successfully. <br/><br/>";
-   // echo '<a href = "/eventShow">Go Back</a>' ;  
+    echo "Event deleted successfully. <br/><br/>";
+    echo '<a href = "/eventShow">Go Back</a>' ;  
     }
 
 }

@@ -14,12 +14,17 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id('event_id');
+            $table->id();
             $table->string('ename');
             $table->longText('description');
-            $table->date('date');
-            $table->time('time');
+            $table->string('date');
+            $table->string('time');
             $table->string('location');
+<<<<<<< HEAD
+=======
+            $table->string('types');
+            $table->integer('pricing');
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
             $table->timestamps();
         });
     }

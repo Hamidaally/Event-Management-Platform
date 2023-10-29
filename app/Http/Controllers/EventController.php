@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
-use RealRashid\SweetAlert\Facades\Alert;
-
 
 
 class EventController extends Controller
@@ -28,10 +26,8 @@ class EventController extends Controller
     $event->time = $request->time;
      $event->save();
 
-
-   return back()->with('toast_success', 'Event Created Successfully!');
-
-  
+   echo "Record inserted successfully.<br/><br/><br/>";
+echo  '<a href = "/eventShow"> Click Here</a> to view events.';
   
 
     }

@@ -4,9 +4,6 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Notifications\Notification;
-use App\Notifications\EventNotification;
-use App\Models\Event;
 
 class Kernel extends ConsoleKernel
 {
@@ -18,7 +15,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+<<<<<<< HEAD
          $schedule->command('reminders:send')->everyTwoMinutes();
+=======
+        // $schedule->command('inspire')->hourly();
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
     }
 
     /**
@@ -32,5 +33,4 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
-
 }

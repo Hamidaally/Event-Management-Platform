@@ -9,12 +9,6 @@ use App\Http\Controllers\EventOrganizer;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\EventViewController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\SecondDashboardController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\QrCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,20 +21,29 @@ use App\Http\Controllers\QrCodeController;
 |
 */
 
-Route::get('/', [SecondDashboardController::class,'index']);
+Route::get('/', function () {
+    return view('welcome');
+   // return view('index');
+});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route that sends data to the database
-Route::post('/show',[EventController::class,'showData'])->name('show');
-//Route that displays data
-Route::get('/eventShow',[EventViewController::class,'index'])->name('eventShow');
 
-//Route that handles crud
+Route::post('/show',[EventController::class,'showData'])->name('show');
+
+Route::get('/eventShow',[EventViewController::class,'index'])->name('eventShow');
 Route::get('/edit/{event}',[EventViewController::class,'edit'])->name('edit');
+// Route::get('/edit/{id}', [EventViewController::class, 'edit'])->name('edit');
+
 Route::put('/update/{event}',[EventViewController::class,'update'])->name('update');
 Route::delete('/delete/{event}',[EventViewController::class,'destroy'])->name('delete');
+
+
+// Route::get('/edit/{event}', [EventViewController::class, 'edit'])->name('edit');
+// Route::put('/update/{event}', [EventViewController::class, 'update'])->name('update');
+
+
 
 
 

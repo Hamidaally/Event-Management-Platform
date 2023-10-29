@@ -4,17 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Payment;
-use App\Models\Review;
 
 class Event extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
 
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
+=======
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
     
     
 }

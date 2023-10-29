@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
   <title>View attendee Records</title>
+=======
+  <title>View Student Records</title>
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -12,7 +16,7 @@
 <body>
 <div class="container">
   <h2 class="text-center">View Event Records</h2>
-  <div><button class="btn btn-primary" style="align-content: center;"><a href="/eventorganizer" style="color: aliceblue;">Create Event</a></button></div>
+          
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -27,18 +31,21 @@
         <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
+<<<<<<< HEAD
         
 =======
         <th>Action</th>
     
 >>>>>>> 88f6a61b8bf5a7f691ee02f306206a53222ffe6e
+=======
+>>>>>>> parent of 10a93d1 (Adding changes to the project)
       </tr>
     </thead>
     <tbody>
     @foreach ($events as $event)
      
       <tr>
-      <td>{{ $event->event_id}}</td> 
+      <td>{{ $event->id}}</td> 
       <td>{{ $event->ename }}</td>
       <td>{{ $event->description}}</td>
       <td>{{ $event->date}}</td>
@@ -48,17 +55,14 @@
       <td>
 <<<<<<< HEAD
         <!-- <a href="{{ route('edit', ['event'=>$event] )}}">Edit</a> -->
-        <button type="button" class="btn btn-success"><a href="{{ route('edit', ['event' => $event->event_id]) }}" style="color: white;">Edit</a></button>
-        
+        <a href="{{ route('edit', ['event' => $event->id]) }}">Edit</a>
       </td>
 
       <td>
-      <form action="{{route('delete',['event' => $event->event_id])}}" method="post">
+      <form action="{{route('delete',['event' => $event->id])}}" method="post">
         @csrf
         @method('delete')
-        
-        <input name="_method" type="hidden" value="DELETE">
-          <button type="submit" class="btn btn-danger confirm-button" >Delete</button>
+<input type="submit" value="Delete"/>
       </form>
         
 =======
@@ -78,28 +82,7 @@
   </table>
 </div>
 <div style = "text-align:center">
-<button type="button" class="btn btn-info"><a href = "/eventorganizer" style="color: white;">Return to first page</a> </button>
+<a href = "/eventorganizer">Return to first page</a> .
 </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script type="text/javascript">
-
-    $('.confirm-button').click(function(event) {
-        var form =  $(this).closest("form");
-        event.preventDefault();
-        swal({
-            title: `Are you sure you want to delete this row?`,
-            text: "It will be gone forever",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                }
-            });
-    });
-
-</script>
 </html>
