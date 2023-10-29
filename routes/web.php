@@ -42,6 +42,8 @@ Route::get('/edit/{event}',[EventViewController::class,'edit'])->name('edit');
 Route::put('/update/{event}',[EventViewController::class,'update'])->name('update');
 Route::delete('/delete/{event}',[EventViewController::class,'destroy'])->name('delete');
 
+
+
 Route::group(['middeware' => ['auth']], function(){
 Route::get('/dashboard',[DashboardController::class,'first'])->name('dashboard');
 });

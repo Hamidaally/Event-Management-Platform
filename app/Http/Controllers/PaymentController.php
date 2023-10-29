@@ -33,7 +33,7 @@ class PaymentController extends Controller
                 "description" => "Test payment from tutsmake.com."
         ]);
    
-        Session::flash('success', 'Payment successful!');
+        Session::flash('success', 'Payment successfull!');
            
         return back();
     }

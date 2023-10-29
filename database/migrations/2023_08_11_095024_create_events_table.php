@@ -20,12 +20,6 @@ class CreateEventsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('location');
-<<<<<<< HEAD
-            $table->string('types');
-            $table->decimal('pricing',10,2);
-            $table->boolean('status')->default(0);
-=======
->>>>>>> 88f6a61b8bf5a7f691ee02f306206a53222ffe6e
             $table->timestamps();
         });
     }
