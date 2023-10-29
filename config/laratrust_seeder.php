@@ -19,10 +19,14 @@ return [
         ],
         'eventorganizer' => [
             'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'profile' => 'r,u',
+            'tickets' => 'c,r,u'
+            
         ],
         'attendee' => [
             'profile' => 'r,u',
+            'tickets' => 'r'
+        
         ],
        
     ],

@@ -15,6 +15,10 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $primaryKey = "user_id";
 
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>View Event Records</title>
+  <title>View attendee Records</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -22,11 +22,16 @@
         <th>Date</th>
         <th>Time</th>
         <th>Location</th>
+<<<<<<< HEAD
         <th>Ticket Types</th>
         <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
         
+=======
+        <th>Action</th>
+    
+>>>>>>> 88f6a61b8bf5a7f691ee02f306206a53222ffe6e
       </tr>
     </thead>
     <tbody>
@@ -39,10 +44,9 @@
       <td>{{ $event->date}}</td>
       <td>{{ $event->time }}</td>
       <td>{{ $event->location }}</td>
-      <td>{{ $event->types}}</td>
-      <td>{{ $event->pricing }}</td>
     
       <td>
+<<<<<<< HEAD
         <!-- <a href="{{ route('edit', ['event'=>$event] )}}">Edit</a> -->
         <button type="button" class="btn btn-success"><a href="{{ route('edit', ['event' => $event->event_id]) }}" style="color: white;">Edit</a></button>
         
@@ -57,6 +61,14 @@
           <button type="submit" class="btn btn-danger confirm-button" >Delete</button>
       </form>
         
+=======
+        <a href="{{ route('edit', ['event' => $event->id]) }}" style="display: inline-block;"class="btn btn-primary">Edit</a>
+      <form action="{{route('delete',['event' => $event->id])}}"  method="post" style="display: inline-block;">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
+         </form>
+>>>>>>> 88f6a61b8bf5a7f691ee02f306206a53222ffe6e
       </td>
 
       </tr>
